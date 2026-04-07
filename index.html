@@ -382,8 +382,9 @@ async function generateFor(query){
   document.getElementById('output').innerHTML=`<div class="loader">${T.loader[lang]}</div>`;
   window.scrollTo({top:document.getElementById('output').offsetTop-20,behavior:'smooth'});
   try{
+    // ✅ التعديل الجوهري: استخدام v1 بدلاً من v1beta ونموذج gemini-2.0-flash-exp
     const res=await fetch(
-      `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${key}`,
+      `https://generativelanguage.googleapis.com/v1/models/gemini-2.0-flash-exp:generateContent?key=${key}`,
       {method:'POST',headers:{'Content-Type':'application/json'},
        body:JSON.stringify({
          system_instruction:{parts:[{text:PROMPT[lang]}]},
